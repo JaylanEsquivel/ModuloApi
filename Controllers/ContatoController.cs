@@ -38,6 +38,19 @@ namespace ModuloApi.Controllers
 
         }
 
+
+        [HttpGet("ObterPorNome")]
+        public IActionResult ObterPorNome(string nome){
+            var contains = _context.Contatos.Where(x => x.Nome.Contains(nome));
+            return Ok(contains);
+        }
+
+        [HttpGet("ObterPorStatus")]
+        public IActionResult ObterPorStatus(bool status){
+            var contains = _context.Contatos.Where(x => x.Status.Equals(status));
+            return Ok(contains);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Atualizar(int id,Contato contato){
 
@@ -54,8 +67,20 @@ namespace ModuloApi.Controllers
             _context.SaveChanges();
 
             return Ok(contatoBanco);
+        }
 
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id){
 
+            var contatoBanco = _context.Contatos.Find(id);
+
+            if(contatoBanco == null)
+                return NotFound();
+
+            _context.Contatos.Remove(contatoBanco);
+            _context.SaveChanges();
+
+            return NoContent();
         }
 
     }
