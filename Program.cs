@@ -1,7 +1,7 @@
-using ModuloApi.Context;
-using Microsoft.EntityFrameworkCore;
+using ModuloApi.Context; /* Importaçao do context de conexao */
+using Microsoft.EntityFrameworkCore; /* Importação para usar o entity */
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args); 
 
 // Add services to the container.
 builder.Services.AddDbContext<AgendaContext>(options =>

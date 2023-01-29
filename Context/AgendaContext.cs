@@ -9,6 +9,7 @@ namespace ModuloApi.Context
 {
     public class AgendaContext : DbContext
     {
+        /* Construtor do c# é o nome da class */
         public AgendaContext(DbContextOptions<AgendaContext> options): base(options) { 
 
         }
